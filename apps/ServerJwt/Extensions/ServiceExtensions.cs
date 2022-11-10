@@ -1,7 +1,8 @@
-using System.Globalization;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using ServerJwt.Data;
 
 namespace ServerJwt.Extensions
 {
@@ -40,6 +41,12 @@ namespace ServerJwt.Extensions
             .AllowAnyMethod();
         });
       });
+    }
+
+    public static void ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
+    {
+      services.AddDbContext<UserContext>(opts =>
+            opts.UseSqlServer(configuration["ConnectionString:UserDB"]));
     }
   }
 }
