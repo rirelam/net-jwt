@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -17,6 +18,7 @@ export class AuthGuard implements CanActivate {
     const token = localStorage.getItem('jwt');
 
     if (token && !this.jwtHelper.isTokenExpired(token)) {
+      console.log(this.jwtHelper.decodeToken(token));
       return true;
     }
 
