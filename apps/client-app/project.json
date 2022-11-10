@@ -19,7 +19,7 @@
           "apps/client-app/src/favicon.ico",
           "apps/client-app/src/assets"
         ],
-        "styles": ["apps/client-app/src/styles.scss"],
+        "styles": ["apps/client-app/src/styles.css"],
         "scripts": []
       },
       "configurations": {
