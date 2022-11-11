@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj": {}
+    "d:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj": {}
   },
   "projects": {
-    "D:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj": {
+    "d:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj",
+        "projectUniqueName": "d:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj",
         "projectName": "ServerJwt",
-        "projectPath": "D:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj",
+        "projectPath": "d:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj",
         "packagesPath": "C:\\Users\\r.lamar\\.nuget\\packages\\",
-        "outputPath": "D:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\obj\\",
+        "outputPath": "d:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

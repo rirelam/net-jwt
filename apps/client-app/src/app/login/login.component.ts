@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
         .subscribe({
           next: (response: LoginResponse) => {
             const token = response.token;
+            const refreshToken = response.refreshToken;
             localStorage.setItem('jwt', token);
+            localStorage.setItem('refreshToken', refreshToken);
             this.invalidLogin = false;
             this.router.navigate(['/']);
           },

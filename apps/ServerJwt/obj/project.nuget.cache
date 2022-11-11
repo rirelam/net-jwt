@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p1gOhS99yqZGpEWAxo2zLGkIs44Nd0hQCXYdYsH+UQ5pTl9+basxfCwO3QQCOYhvPQX6FE20pWxa/6z+X1gpew==",
+  "dgSpecHash": "APej6WktO+A3pAuKPZm1+zZhSU3/E/HoVIvbuGJxoAIAHkUh0lx/zjVQUOu/us2SA5Tm8jnfbvwMG987rs38Hg==",
   "success": true,
-  "projectFilePath": "D:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj",
+  "projectFilePath": "d:\\HD_SAMPLES\\JWT\\net-jwt\\apps\\ServerJwt\\ServerJwt.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\r.lamar\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\r.lamar\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

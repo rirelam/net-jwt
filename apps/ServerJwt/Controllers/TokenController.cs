@@ -41,6 +41,8 @@ namespace ServerJwt.Controllers
       var newRefreshToken = _tokenService.GenerateRefreshToken();
 
       user.RefreshToken = newRefreshToken;
+      user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
+
       _userContext.SaveChanges();
 
       return Ok(new LoginResponse()
