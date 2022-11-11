@@ -1,9 +1,8 @@
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using ServerJwt.Data;
 using ServerJwt.DTO;
+using ServerJwt.Services;
 
 namespace ServerJwt.Controllers
 {
@@ -11,35 +10,48 @@ namespace ServerJwt.Controllers
   [Route("api/[controller]")]
   public class AuthController : ControllerBase
   {
-    [HttpPost("login")]
-    public IActionResult Login([FromBody] LoginInput user)
+    private readonly UserContext _userContext;
+    private readonly ITokenService _tokenService;
+
+    public AuthController(UserContext userContext, ITokenService tokenService)
     {
-      if (user is null)
+      _userContext = userContext ?? throw new ArgumentNullException(nameof(userContext));
+      _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
+    }
+
+    [HttpPost("login")]
+    public IActionResult Login([FromBody] LoginModel userToLogin)
+    {
+      if (userToLogin is null)
       {
         return BadRequest("Invalid client request");
       }
-      if (user.UserName == "johndoe" && user.Password == "def@123")
-      {
-        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-        var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-        var claims = new List<Claim>
+      var user = _userContext?.LoginModels?.FirstOrDefault(u =>
+          (u.UserName == userToLogin.UserName) && (u.Password == userToLogin.Password));
+
+      if (user is null)
+        return Unauthorized();
+
+      var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.UserName),
+            new Claim(ClaimTypes.Name, user.UserName??string.Empty),
             new Claim(ClaimTypes.Role, "Manager")
         };
 
-        var tokeOptions = new JwtSecurityToken(
-            issuer: "https://localhost:5001",
-            audience: "https://localhost:5001",
-            claims: claims,
-            expires: DateTime.Now.AddMinutes(5),
-            signingCredentials: signinCredentials
-        );
-        var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-        return Ok(new LoginResponse { Token = tokenString });
-      }
-      return Unauthorized();
+      var accessToken = _tokenService.GenerateAccessToken(claims);
+      var refreshToken = _tokenService.GenerateRefreshToken();
+
+      user.RefreshToken = refreshToken;
+      user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
+
+      _userContext?.SaveChanges();
+
+      return Ok(new LoginResponse
+      {
+        Token = accessToken,
+        RefreshToken = refreshToken
+      });
     }
   }
 }

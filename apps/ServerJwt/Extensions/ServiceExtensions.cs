@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ServerJwt.Data;
+using ServerJwt.Services;
 
 namespace ServerJwt.Extensions
 {
@@ -47,6 +48,11 @@ namespace ServerJwt.Extensions
     {
       services.AddDbContext<UserContext>(opts =>
             opts.UseSqlServer(configuration["ConnectionString:UserDB"]));
+    }
+
+    public static void ConfigureJwtServices(this IServiceCollection services)
+    {
+      services.AddTransient<ITokenService, TokenService>();
     }
   }
 }

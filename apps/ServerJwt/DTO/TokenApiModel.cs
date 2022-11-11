@@ -1,9 +1,8 @@
 namespace ServerJwt.DTO
 {
-  public class LoginResponse
+  public class TokenApiModel
   {
-    public string? Token { get; set; }
+    public string? AccessToken { get; set; }
     public string? RefreshToken { get; set; }
-
   }
 }

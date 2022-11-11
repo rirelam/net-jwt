@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using ServerJwt.Models;
+using ServerJwt.DTO;
 
 namespace ServerJwt.Data
 {
-public class UserContext : DbContext
+  public class UserContext : DbContext
   {
     public UserContext(DbContextOptions dbContextOptions)
         : base(dbContextOptions)
